@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NovaMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --nm-primary: #0d9488; --nm-primary-dark: #0f766e; }
+        .navbar { background-color: var(--nm-primary-dark) !important; }
+        footer { background-color: var(--nm-primary-dark) !important; }
+        .btn-nm { background-color: var(--nm-primary); color: #fff; border: none; }
+        .btn-nm:hover { background-color: var(--nm-primary-dark); color: #fff; }
+        .btn-outline-nm { border: 1px solid var(--nm-primary); color: var(--nm-primary); }
+        .btn-outline-nm:hover { background-color: var(--nm-primary); color: #fff; }
+        .price-tag { color: var(--nm-primary); }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🛒 NovaMart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_home') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_cart') }}">🛍️ Cart</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Product Details -->
+<div class="container my-5">
+    <div class="row">
+
+        <!-- Product Image -->
+        <div class="col-md-6">
+            <img src="{{ asset('product_images/smartwatch.png') }}"
+                 class="img-fluid rounded shadow"
+                 alt="Product">
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}" class="text-decoration-none" style="color:#0d9488">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+                </ol>
+            </nav>
+
+            <span class="badge mb-3" style="background:#0d9488">Wearables</span>
+            <h1 class="mb-3">Smartwatch Pro</h1>
+            <h3 class="price-tag mb-4">$129.99</h3>
+
+            <div class="mb-4">
+                <h5>Description</h5>
+                <p class="text-muted">
+                    Stay connected and track your health goals with the Smartwatch Pro.
+                    Features heart-rate monitoring, GPS, and a sleek AMOLED display
+                    built for everyday life.
+                </p>
+            </div>
+
+            <form>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity"
+                           value="1" min="1" max="10" style="max-width:100px;">
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex">
+                    <button type="submit" class="btn btn-nm btn-lg">Add to Cart</button>
+                    <a href="{{ path('app_home') }}" class="btn btn-outline-secondary btn-lg">Continue Shopping</a>
+                </div>
+            </form>
+
+            <div class="mt-4 pt-4 border-top">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><strong>SKU:</strong> SWP-2026-007</li>
+                    <li class="mb-2"><strong>Availability:</strong> <span style="color:#0d9488">In Stock</span></li>
+                    <li class="mb-2"><strong>Category:</strong> Wearables</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-white mt-5 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>🛒 NovaMart</h5>
+                <p>Fresh finds, smart prices.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p>&copy; 2026 NovaMart. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

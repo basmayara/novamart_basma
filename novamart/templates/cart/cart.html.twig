@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - NovaMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --nm-primary: #0d9488; --nm-primary-dark: #0f766e; }
+        .navbar { background-color: var(--nm-primary-dark) !important; }
+        footer { background-color: var(--nm-primary-dark) !important; }
+        .card-header-nm { background-color: var(--nm-primary) !important; }
+        .btn-nm { background-color: var(--nm-primary); color: #fff; border: none; }
+        .btn-nm:hover { background-color: var(--nm-primary-dark); color: #fff; }
+        .btn-outline-nm { border: 1px solid var(--nm-primary); color: var(--nm-primary); }
+        .btn-outline-nm:hover { background-color: var(--nm-primary); color: #fff; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🛒 NovaMart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_home') }}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('app_cart') }}">🛍️ Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="mb-4 fw-bold" style="color:#0f766e">Shopping Cart</h1>
+
+        {% if cart.cartItems is empty %}
+            <div class="alert" style="background:#ccfbf1; border-color:#0d9488; color:#0f766e;">
+                Your cart is empty.
+                <a href="{{ path('app_home') }}" style="color:#0d9488">Continue shopping</a>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in cart.cartItems %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('product_images/thumbnail.png') }}"
+                                                         class="img-thumbnail me-3"
+                                                         alt="{{ item.product.name }}"
+                                                         style="width:80px;height:80px;object-fit:cover;">
+                                                    <div>
+                                                        <h6 class="mb-0">{{ item.product.name }}</h6>
+                                                        <small class="text-muted">{{ item.product.category.name }}</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ item.price }} €</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td class="fw-bold">{{ item.price * item.quantity }} €</td>
+                                            <td>
+                                                <form method="post" action="{{ path('app_cart_remove', {id: item.product.id}) }}">
+                                                    <button class="btn btn-sm btn-outline-danger">Remove</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a href="{{ path('app_home') }}" class="btn btn-outline-nm">← Continue Shopping</a>
+                        <form method="post" action="{{ path('app_cart_clear') }}">
+                            <button class="btn btn-outline-danger">Clear Cart</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header card-header-nm text-white">
+                            <h5 class="mb-0">Order Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span>{{ total }} €</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping:</span>
+                                <span>5.00 €</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-3">
+                                <strong>Total:</strong>
+                                <strong style="color:#0d9488">{{ total + 5 }} €</strong>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-nm btn-lg">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h6 class="card-title">Have a promo code?</h6>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter code">
+                                <button class="btn btn-outline-secondary" type="button">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer class="text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🛒 NovaMart</h5>
+                    <p>Fresh finds, smart prices.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2026 NovaMart. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

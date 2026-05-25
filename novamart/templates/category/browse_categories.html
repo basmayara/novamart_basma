@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - NovaMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --nm-primary: #0d9488; --nm-primary-dark: #0f766e; }
+        .navbar { background-color: var(--nm-primary-dark) !important; }
+        .hero-section { background: linear-gradient(135deg, #0d9488, #059669); }
+        footer { background-color: var(--nm-primary-dark) !important; }
+        .card:hover { box-shadow: 0 4px 20px rgba(13,148,136,.2); transform: translateY(-2px); transition: .2s; }
+        .feature-icon-nm { color: #0d9488; }
+        .btn-outline-nm { border: 1px solid #0d9488; color: #0d9488; }
+        .btn-outline-nm:hover { background-color: #0d9488; color: #fff; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🛒 NovaMart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{{ path('app_home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_cart') }}">🛍️ Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero-section text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold mb-4">Welcome to NovaMart</h1>
+                    <p class="lead mb-4">Discover premium products across all categories. Fresh finds, smart prices — every day.</p>
+                    <a href="{{ path('app_home') }}" class="btn btn-light btn-lg me-2">Shop Now</a>
+                    <a href="#categories" class="btn btn-outline-light btn-lg">Browse Categories</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('product_images/hero.png') }}" class="img-fluid rounded" alt="Shopping at NovaMart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="container my-5" id="categories">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Shop by Category</h2>
+            <p class="text-muted">Explore our curated selection across all departments</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge mb-2" style="background:#0d9488">14 Products</span>
+                        <h4 class="card-title">Wearables & Tech</h4>
+                        <p class="card-text text-muted">Smartwatches, earbuds, and gadgets</p>
+                        <a href="#" class="btn btn-outline-nm">Browse Wearables</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-warning text-dark mb-2">21 Products</span>
+                        <h4 class="card-title">Footwear</h4>
+                        <p class="card-text text-muted">Sneakers, boots and sandals</p>
+                        <a href="#" class="btn btn-outline-warning">Browse Footwear</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-success mb-2">17 Products</span>
+                        <h4 class="card-title">Home & Decor</h4>
+                        <p class="card-text text-muted">Lighting, furniture, and accents</p>
+                        <a href="#" class="btn btn-outline-success">Browse Home</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-info mb-2">11 Products</span>
+                        <h4 class="card-title">Fitness</h4>
+                        <p class="card-text text-muted">Yoga, training gear, and equipment</p>
+                        <a href="#" class="btn btn-outline-info">Browse Fitness</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-danger mb-2">9 Products</span>
+                        <h4 class="card-title">Books & Learning</h4>
+                        <p class="card-text text-muted">Cookbooks, guides and fiction</p>
+                        <a href="#" class="btn btn-outline-danger">Browse Books</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-secondary mb-2">16 Products</span>
+                        <h4 class="card-title">Beauty & Wellness</h4>
+                        <p class="card-text text-muted">Skincare, cosmetics and relaxation</p>
+                        <a href="#" class="btn btn-outline-secondary">Browse Beauty</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge mb-2" style="background:#0d9488">22 Products</span>
+                        <h4 class="card-title">Toys & Games</h4>
+                        <p class="card-text text-muted">Family fun and entertainment</p>
+                        <a href="#" class="btn btn-outline-nm">Browse Toys</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-dark mb-2">10 Products</span>
+                        <h4 class="card-title">Automotive</h4>
+                        <p class="card-text text-muted">Car accessories and tools</p>
+                        <a href="#" class="btn btn-outline-dark">Browse Auto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <span class="badge bg-warning text-dark mb-2">13 Products</span>
+                        <h4 class="card-title">Pet Supplies</h4>
+                        <p class="card-text text-muted">Food, toys and accessories for pets</p>
+                        <a href="#" class="btn btn-outline-warning">Browse Pets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="py-5 mt-5" style="background:#f0fdfa">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <div class="mb-3 feature-icon-nm" style="font-size:3rem">🚚</div>
+                            <h5>Free Shipping</h5>
+                            <p class="text-muted">On all orders over $60</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <div class="mb-3 feature-icon-nm" style="font-size:3rem">🔒</div>
+                            <h5>Secure Payments</h5>
+                            <p class="text-muted">256-bit SSL encryption</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <div class="mb-3 feature-icon-nm" style="font-size:3rem">↩️</div>
+                            <h5>Easy Returns</h5>
+                            <p class="text-muted">45-day hassle-free returns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🛒 NovaMart</h5>
+                    <p>Fresh finds, smart prices.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2026 NovaMart. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

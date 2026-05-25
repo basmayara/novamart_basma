@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - NovaMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --nm-primary: #0d9488; --nm-primary-dark: #0f766e; }
+        .navbar { background-color: var(--nm-primary-dark) !important; }
+        footer { background-color: var(--nm-primary-dark) !important; }
+        .card-header-nm { background-color: var(--nm-primary) !important; }
+        .btn-outline-nm { border: 1px solid var(--nm-primary); color: var(--nm-primary); }
+        .btn-outline-nm:hover { background-color: var(--nm-primary); color: #fff; }
+        .sidebar-link { color: #0d9488 !important; text-decoration: none; }
+        .sidebar-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🛒 NovaMart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_cart') }}">🛍️ Cart</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="{{ asset('product_images/avatar.png') }}" class="rounded-circle mb-3"
+                             alt="User Avatar" width="150" height="150" style="object-fit:cover;">
+                        <h5 class="card-title">Alex Martinez</h5>
+                        <p class="text-muted">alex.martinez@email.com</p>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#profile" class="sidebar-link">Profile Information</a></li>
+                            <li class="mb-2"><a href="#orders" class="sidebar-link">My Orders</a></li>
+                            <li class="mb-2"><a href="#" class="sidebar-link">Settings</a></li>
+                            <li class="mb-2"><a href="{{ path('app_login') }}" class="text-danger text-decoration-none">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="card mb-4" id="profile">
+                    <div class="card-header card-header-nm text-white">
+                        <h5 class="mb-0">Profile Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="fw-bold">Full Name:</label>
+                                <p>Alex Martinez</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold">Email:</label>
+                                <p>alex.martinez@email.com</p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="fw-bold">Phone:</label>
+                                <p>+1 (555) 987-6543</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold">Member Since:</label>
+                                <p>March 2, 2026</p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label class="fw-bold">Shipping Address:</label>
+                                <p>47 Greenway Blvd, Suite 3C<br>Austin, TX 73301<br>United States</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-nm">Edit Profile</button>
+                    </div>
+                </div>
+
+                <!-- Orders -->
+                <div class="card" id="orders">
+                    <div class="card-header card-header-nm text-white">
+                        <h5 class="mb-0">Order History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h6>Order #NVM-2026-001</h6>
+                                        <p class="text-muted mb-2">Placed on: April 12, 2026</p>
+                                        <p class="mb-1"><strong>Items:</strong> Smartwatch Pro, Portable Speaker</p>
+                                        <p class="mb-0"><strong>Total:</strong> $199.98</p>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <span class="badge bg-success mb-2">Delivered</span><br>
+                                        <a href="#" class="btn btn-sm btn-outline-nm mt-2">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h6>Order #NVM-2026-002</h6>
+                                        <p class="text-muted mb-2">Placed on: April 5, 2026</p>
+                                        <p class="mb-1"><strong>Items:</strong> Urban Sneakers</p>
+                                        <p class="mb-0"><strong>Total:</strong> $89.99</p>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <span class="badge bg-info mb-2">In Transit</span><br>
+                                        <a href="#" class="btn btn-sm btn-outline-nm mt-2">Track Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h6>Order #NVM-2026-003</h6>
+                                        <p class="text-muted mb-2">Placed on: March 28, 2026</p>
+                                        <p class="mb-1"><strong>Items:</strong> Yoga Bundle, Desk Lamp LED</p>
+                                        <p class="mb-0"><strong>Total:</strong> $84.98</p>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <span class="badge bg-warning mb-2">Processing</span><br>
+                                        <a href="#" class="btn btn-sm btn-outline-nm mt-2">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="pagination justify-content-center mb-0">
+                                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item active" style="--bs-pagination-active-bg:#0d9488; --bs-pagination-active-border-color:#0d9488;">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🛒 NovaMart</h5>
+                    <p>Fresh finds, smart prices.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2026 NovaMart. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - NovaMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --nm-primary: #0d9488; --nm-primary-dark: #0f766e; }
+        .card-header-nm { background-color: var(--nm-primary) !important; }
+        .btn-nm { background-color: var(--nm-primary); color: #fff; border: none; }
+        .btn-nm:hover { background-color: var(--nm-primary-dark); color: #fff; }
+    </style>
+</head>
+<body>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-nm text-white">
+                    <h4 class="mb-0">Create a NovaMart Account</h4>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.firstName) }}
+                        {{ form_row(form.lastName) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.plainPassword) }}
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-nm">Register</button>
+                        </div>
+                    {{ form_end(form) }}
+                    <hr>
+                    <p class="text-center mb-0">
+                        Already have an account? <a href="{{ path('app_login') }}" style="color:#0d9488">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
